@@ -1,30 +1,15 @@
 //counter code
-var button = document.getElementById('counter');
-
-button.onclick = function () {
-    //craete a request object
-    var request = new XMLHttpRequest();
+var button =document.getElementById('counter');
+var counter = 0;
+button.onclick = function() {
+    //make a req. to the counter end point
     
+    //capture a response and store it in a variable
     
-    //capture the response and store it to in a variable
-    request.onreadystatechange = function() {
-      if(request.readystate===XMLHttpRequest.DONE)  {
-          //take some action 
-          if (request.status===200){
-            var span = document.getElementById('count');
-            span.innerHTML = counter.toString();
-              
-          }
-          
-      }
-      //not done yet
-    };
-    
-   //make the request
-   request.open('GET',"http://amarpandeymailani.imad.hasura-app.io/counter",true);
-   request.send(null);
-     
-};
-     
+    //render a variable in the correct span 
+    counter = counter + 1;
+    var span = document.getElementById('count');
+    span.innerHTML.counter.toString();
+}
      
      
