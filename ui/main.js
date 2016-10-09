@@ -9,17 +9,18 @@ button.onclick = function() {
     request.onreadystatechange = function(){
         if(request.readyState===XMLHttpRequest.DONE){
             //take some action
-            if (request.status === 200){
+            if (request.status === 502){
                 var counter = request.responseText;
               var span = document.getElementById('count');
               span.innerHTML = counter.toString();  
             }
         }
+        //not done yet 
     }
-    //render a variable in the correct span 
+    //make the request
     request.open('GET','http://amarpandeymailani.imad.hasura-app.io/counter', true);
     request.send(null);
     
-}
+};
      
      
