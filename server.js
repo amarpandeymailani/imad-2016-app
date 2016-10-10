@@ -110,7 +110,7 @@ app.get('/submit-name/:name', function (req, res) { //url submit-name?name= xxxx
     //get the name from the req.
     var name = req.params.name;
     names.push(JSON.stringify(name));
-    //json javascript object notation
+    //json javascript object notation   
   
 });
 
