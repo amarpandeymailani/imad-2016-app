@@ -91,7 +91,7 @@ app.get('/', function (req, res) {
  function hash (input,salt) {
      //how we do craete ahash
      var hashed = crypto.pbkdf2Sync(input,salt,10000,512,'sha512');
-     return hashes.toString('hex');
+     return hashed.toString('hex');
      
  }
  
