@@ -139,7 +139,7 @@ if(err){
     
 }
   });
-  res.send(createTemplate(articleData));
+  
 });
 
 
