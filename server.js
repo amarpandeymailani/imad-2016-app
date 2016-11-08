@@ -104,11 +104,12 @@ app.get('/', function (req, res) {
   
   app.post('/create-user',function(req,res){
       //username,password
+      //{"username:amar,"password:password"}
       // JSON
       var username = req.body.username;
        var password = req.body.password;
       
-      var salt = crypto.getRandomBytes(128).toString('hex');
+      var salt = crypto.RandomBytes(128).toString('hex');
       var dbString = hash(password,salt);
       pool.query('SELECT * FROM test' ,function (err,result){
            if(err){
