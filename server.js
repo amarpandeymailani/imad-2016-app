@@ -96,6 +96,7 @@ app.get('/', function (req, res) {
      return ["pkdf2","10000",salt,hashed.toString('hex')].join('$');
      
  }
+ //this is 
  
  app.get('/hash/:input',function (req,res){
      var hashedString = hash(req.params.input,'this-is-some-random-string');
