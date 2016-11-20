@@ -161,7 +161,7 @@ app.get('/', function (req, res) {
        if(req.session && req.session.auth && req.session.auth.userId){
            res.send('you are logged in: ' + req.session.auth.userId.toString());
         }   else{
-            re.send('you are not logged in');
+            res.send('you are not logged in');
             
         }
        
