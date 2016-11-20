@@ -166,7 +166,15 @@ app.get('/', function (req, res) {
         }
        
        
-   });
+   }); 
+   app.get('/logout',function(req,res){
+       
+       delete req.session.auth;
+       res.send('logged out');
+       
+       });
+      
+          
       
   
  var pool =new Pool(config);
