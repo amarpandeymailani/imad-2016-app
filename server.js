@@ -143,50 +143,7 @@ app.get('/', function (req, res) {
                 var salt = dbString.split('$')[2];
                 var hashedPassword = hash(password,salt);//craeting a hash based on the password submitted and the  original  salt
             if(hashedPassword === dbString){
-
-121
-122
-123
-124
-125
-126
-127
-128
-129
-130
-131
-132
-133
-134
-135
-136
-137
-138
-139
-140
-141
-142
-143
-144
-145
-146
-147
-148
-149
-150
-151
-152
-153
-154
-155
-156
-157
-158
-159
-160
-161
-162
-           if(err){
+             `  if(err){
            res.status(500).send(err.tostring());
         }else{
             res.send('user succsessfuly created: ' + username);
@@ -335,3 +292,14 @@ var port = 8080; // Use 8080 for local development because you might already hav
 app.listen(8080, function () {
   console.log(`IMAD course app listening on port ${port}!`);
 });
+
+          
+          
+          
+          
+          
+          
+          
+          
+          
+           
