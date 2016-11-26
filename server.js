@@ -143,6 +143,91 @@ app.get('/', function (req, res) {
                 var salt = dbString.split('$')[2];
                 var hashedPassword = hash(password,salt);//craeting a hash based on the password submitted and the  original  salt
             if(hashedPassword === dbString){
+
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+           if(err){
+           res.status(500).send(err.tostring());
+        }else{
+            res.send('user succsessfuly created: ' + username);
+        }
+      });
+  });
+   app.post('/login',function(req,res){
+        var username = req.body.username;
+       var password = req.body.password;
+      
+      
+     
+      pool.query('SELECT * FROM "user" WHERE username = $1',[username],function (err,result){
+           if(err){
+           res.status(500).send(err.tostring());
+        }else{
+            if(result.rows.length===0){
+                res.send(403).send('username/password is invalid');
+            }else{
+                //match the password 
+                var dbString = result.rows[0].password;
+                var salt = dbString.split('$')[2];
+                var hashedPassword = hash(password,salt);//craeting a hash based on the password submitted and the  original  salt
+            if(hashedPassword === dbString){
+                 //set the session
+                  req.session.auth = {userId:result.rows[0].Id};
+                  //set cookie with a session id
+                  //internally ,on the server iside,it maps the session id to an object
+                  //{auth:{userid}}
+                res.send('credentials correct');
+        } else{
+            res.send(403).send('username/password is invalid');
+        }
+            }
+            
+        }
+      });
+   });
+   app.get('/check-login',function(req,res){
+       if(req.session && req.session.auth && req.session.auth.userId){
+
                  //set the session
                   req.session.auth = {userId:result.rows[0].Id};
                   //set cookie with a session id
@@ -240,9 +325,7 @@ app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
 
-app.get('/ui/madi.png', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
-});
+
 app.get('/ui/article.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'article.js'));
 });
