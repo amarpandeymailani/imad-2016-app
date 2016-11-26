@@ -159,23 +159,7 @@ app.get('/', function (req, res) {
         }
       });
    });
-   app.get('/check-login',function(req,res){
-       if(req.session && req.session.auth && req.session.auth.userId){
-
-                 //set the session
-                  req.session.auth = {userId:result.rows[0].Id};
-                  //set cookie with a session id
-                  //internally ,on the server iside,it maps the session id to an object
-                  //{auth:{userid}}
-                res.send('credentials correct');
-        } else{
-            res.send(403).send('username/password is invalid');
-             
-            }
-   } 
-   }
-      });
-   });
+   
    app.get('/check-login',function(req,res){
        if(req.session && req.session.auth && req.session.auth.userId){
            res.send('you are logged in: ' + req.session.auth.userId.toString());
